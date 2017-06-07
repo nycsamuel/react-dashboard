@@ -19,12 +19,12 @@ module.exports = {
   },
   module: {
     rules: [
-      {test: /\.txt$/, use: 'raw-loader'},
+      { test: /\.txt$/, use: 'raw-loader' },
       // {test: /\.css$/, use: [
       //   {loader: 'style-loader'},
       //   {loader: 'css-loader', options: {modules: true}},
       // ]}, 
-      {test: /\.css$/, use: ['style-loader', 'css-loader']},
+      { test: /\.css$/, use: ['style-loader', 'css-loader'] },
    ],
   },
   plugins: [
