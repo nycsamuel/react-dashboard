@@ -30,9 +30,8 @@ module.exports = {
   plugins: [
     new webpack.optimize.UglifyJsPlugin(),
     new HtmlWebpackPlugin({
-      title: 'React Dashboard',
-      // template:'./src/index.html' // taken from webpack site
-      template: require('html-webpack-template'),
+      template:'./src/index.html' // taken from webpack site
+      // template: require('html-webpack-template'), // from bobby's webpack
     }),
   ],
 };
