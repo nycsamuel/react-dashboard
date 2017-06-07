@@ -20,14 +20,15 @@ module.exports = {
   module: {
     rules: [
       {test: /\.txt$/, use: 'raw-loader'},
-      {test: /\.css$/, use: [
-        {loader: 'style-loader'},
-        {loader: 'css-loader', options: {modules: true}},
-        // need style and css loader for css to be active
-      ]}, 
+      // {test: /\.css$/, use: [
+      //   {loader: 'style-loader'},
+      //   {loader: 'css-loader', options: {modules: true}},
+      // ]}, 
+      {test: /\.css$/, use: ['style-loader', 'css-loader']},
    ],
   },
   plugins: [
+    new webpack.HotModuleReplacementPlugin(), // enable HMR
     new webpack.optimize.UglifyJsPlugin(),
     new HtmlWebpackPlugin({
       template:'./src/index.html' // taken from webpack site
