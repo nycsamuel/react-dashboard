@@ -9,8 +9,8 @@ export default class App extends Component {
 
   render() {
     return (
-      <div className="test">
-        <h1>TESTING</h1>
+      <div className="container">
+        <h1>HELLO WORLD!</h1>
       </div>
     );
   }
