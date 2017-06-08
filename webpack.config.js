@@ -12,7 +12,7 @@ module.exports = {
   entry: {
     app: `${APP_DIR}/index.js`,
     // vendor: `${APP_DIR}/vendor/moment.js`,
-    vendor: 'moment',
+    // vendor: 'moment',
   },
   output: {
     // filename: 'bundle.js', // for single entry point
@@ -20,8 +20,6 @@ module.exports = {
     filename: '[name].[chunkhash].js', // for code splitting (vendor) with caching
     path: BUILD_DIR,
   },
-  cache: true,
-  debug: true,
   devtool: 'cheap-eval-source-map',
   module: {
     rules: [
