@@ -29,14 +29,14 @@ module.exports = {
       { test: /\.(jpe?g|png|gif|svg)$/i, use: 'file-loader?name=/img/[name].[ext]' },
       { 
         test: /\.(js|jsx)$/, 
-        exclulde: /(node_modules|bower_components)/,
+        exclude: /(node_modules|bower_components)/,
         use: {
           loader: 'babel-loader',
           options: { 
               presets: ['es2015', 'react'],
               plugins: [ 
                   ['transform-strict-mode', { "strict": true }], 
-                  ['transform-object-rest-spread'],
+                  [require('transform-object-rest-spread')],
               ], 
           },
         },
