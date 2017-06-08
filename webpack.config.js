@@ -17,9 +17,12 @@ module.exports = {
   output: {
     // filename: 'bundle.js', // for single entry point
     // filename: '[name].js', // for multiple entry points
-    filename: '[name].[chunkhash].js', // for code splitting (vendor)
+    filename: '[name].[chunkhash].js', // for code splitting (vendor) with caching
     path: BUILD_DIR,
   },
+  cache: true,
+  debug: true,
+  devtool: 'cheap-eval-source-map',
   module: {
     rules: [
       { test: /\.txt$/, use: 'raw-loader' },
@@ -42,7 +45,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template:'./src/index.html' // taken from webpack site
-      // template: require('html-webpack-template'), // from bobby's webpack
+      // template: require('html-webpack-template'), // from bobby's webpack; requires html-webpack-template module
     }),
   ],
 };
