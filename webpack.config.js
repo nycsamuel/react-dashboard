@@ -28,10 +28,12 @@ module.exports = {
       { test: /\.txt$/, use: 'raw-loader' },
       // { test: /\.css$/, use: ['style-loader', 'css-loader'] }, // this is not asynchronous
       { test: /\.css$/, use: ExtractTextPlugin.extract({ use: 'css-loader' }) }, // asynchronous method
+      { test: /\.(jpe?g|png|gif|svg)$/i, use: 'file-loader?name=/img/[name].[ext]' },
    ],
   },
   plugins: [
     new ExtractTextPlugin('style.css'), // enable async method to load css styles
+    // new ExtractTextPlugin('/css/[name].css', { allChunks: true }), // bobby's config
     new webpack.HotModuleReplacementPlugin(), // enable HMR
     new webpack.optimize.UglifyJsPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
