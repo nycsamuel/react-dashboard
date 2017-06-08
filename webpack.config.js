@@ -17,7 +17,7 @@ module.exports = {
   output: {
     // filename: 'bundle.js', // for single entry point
     // filename: '[name].js', // for multiple entry points
-    filename: '[name].[chunkhash].js', // for code splitting (vendor) with caching
+    filename: '[name].[hash].js', // for code splitting (vendor) with caching
     path: BUILD_DIR,
   },
   devtool: 'cheap-eval-source-map',
@@ -36,7 +36,7 @@ module.exports = {
               presets: ['es2015', 'react'],
               plugins: [ 
                   ['transform-strict-mode', { "strict": true }], 
-                  [require('transform-object-rest-spread')],
+                  [require('babel-plugin-transform-object-rest-spread')],
               ], 
           },
         },

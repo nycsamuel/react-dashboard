@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import style from './App.css';
 
-class App extends Component {
+export default class App extends Component {
   constructor() {
     super();
-    this.state = { test };
+    this.state = { test: "test" };
   }
 
   render() {
