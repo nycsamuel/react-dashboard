@@ -14,7 +14,15 @@ export default class Wallpaper extends Component {
   updateWallpaper() {
     let img = this.state.backgroumdImage;
     let wp = document.getElementById('wallpaper');
-    wp.style.backgroundImage = `url(${this.props.wallpaperImg})`;
+    // wp.style.backgroundImage = `url(${this.props.wallpaperImg})`;
+
+    fetch('https://api.desktoppr.co/1/wallpapers/random')
+      .then(response => response.json())
+      .then((data) => {
+        // console.log('data', data.response.image.url);
+        wp.style.backgroundImage = `url(${data.response.image.url})`;
+      })
+      .catch(error => console.log('updateWallpaper error', error));
   }
 
   render() {
