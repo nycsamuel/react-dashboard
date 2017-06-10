@@ -28,9 +28,11 @@ export default class Wallpaper extends Component {
 
   render() {
     return (
-      <div id="wallpaper"></div>
-      <div className="weather-container">
-        <Weather />
+      <div className="wallpaper-container">
+        <div id="wallpaper"></div>
+        <div className="weather-container">
+          <Weather />
+        </div>
       </div>
     );
   }
