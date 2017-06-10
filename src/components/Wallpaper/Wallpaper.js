@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import style from './Wallpaper.css';
 
+import Weather from '../Weather/Weather.js';
+
 export default class Wallpaper extends Component {
   constructor(props) {
     super(props);
@@ -27,6 +29,9 @@ export default class Wallpaper extends Component {
   render() {
     return (
       <div id="wallpaper"></div>
+      <div className="weather-container">
+        <Weather />
+      </div>
     );
   }
 }
