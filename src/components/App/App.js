@@ -2,33 +2,52 @@ import React, { Component } from 'react';
 import style from './App.css';
 import './normalize.css';
 
+import Wallpaper from '../Wallpaper/Wallpaper.js';
+
+// var wallpaperStyle = {
+//   backgroundImage: 'url("http://images.all-free-download.com/images/graphiclarge/water_waterfall_nature_214751.jpg")',
+//   height: `${window.innerHeight}px`,
+//   width: `${window.innerWidth}px`,
+// };
+
 export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      windowHeight: `${window.innerHeight}px`,
-      windowWidth: `${window.innerWidth}px`,
+      winHeight: `${window.innerHeight}px`,
+      winWidth: `${window.innerWidth}px`,
     };
-    const wallpaper = document.getElementById('wallpaper');
-    this.handleWindowResize = this.handleWindowResize.bind(this);
+    // wallpaperStyle = {
+    //   backgroundImage: 'url("http://images.all-free-download.com/images/graphiclarge/water_waterfall_nature_214751.jpg")',
+    //   height: this.state.winHeight,
+    //   width: this.state.winWidth,  
+    // };
+
+    this.updateWindowSize = this.updateWindowSize.bind(this);
   }
 
   componentDidMount() { 
-    window.addEventListener('resize', this.handleWindowResize);
+    window.addEventListener('resize', this.updateWindowSize);
   }
 
-  handleWindowResize(event) {
+  updateWindowSize(event) {
+    // console.log(event.srcElement.innerWidth);
     this.setState({
-      windowHeight: `${window.innerHeight}px`,
-      windowWidth: `${window.innerWidth}px`, 
+      winHeight: `${event.srcElement.innerHeight}px`,
+      winWidth: `${event.srcElement.innerWidth}px`,
     });
+
+    // console.log(this.state);
   }
 
   render() {
     return (
       <div className="container">
-        <div id="wallpaper"></div>
-        <h1>HELLO WORLD</h1>
+        <Wallpaper 
+          height={this.state.winHeight}
+          width={this.state.winWidth}
+          wallpaperImg="http://images.all-free-download.com/images/graphiclarge/water_waterfall_nature_214751.jpg"
+        />
       </div>
     );
   }
