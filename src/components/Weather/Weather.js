@@ -7,6 +7,7 @@ export default class Weather extends Component {
     this.state = {
       name: '',
       temp: '',
+      icon: '',
     };
   }
 
@@ -20,10 +21,11 @@ export default class Weather extends Component {
       .then(res => res.json())
       .then(data => {
         console.log('weather data', data);
-        // this.setState({ currentWeather: data });
+        // console.log(data.weather[0].icon);
         this.setState({ 
           name: data.name,
           temp: this.convertToFah(data.main.temp),
+          icon: this.iconURL(data.weather[0].icon),
         });
       })
       .catch(error => console.log('getWeather error', error));
@@ -31,15 +33,20 @@ export default class Weather extends Component {
     console.log('after fetch');
   }
 
+  iconURL(icon) {
+    const iconURL = 'http://openweathermap.org/img/w/';
+    return `${iconURL}${icon}.png`;
+  }
+
   convertToFah(k) {
-    return ((k * 9/5) - 459.67).toFixed(1);
+    return ((k - 273.15) * 1.80 + 32).toFixed(1);
   }
 
   render() {
     return (
       <div>
         <h1>{this.state.name}</h1>
-        <p>{this.state.temp}<span className="fa fa-sun-o"></span></p>
+        <p><img src={this.state.icon} alt="Weather Icon"/> {this.state.temp} <span id="fahrenheit">&#8457;</span></p>
       </div>
     );
   }
