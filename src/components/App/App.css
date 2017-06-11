@@ -1,1 +1,7 @@
 img { vertical-align: middle }
+
+a.btn {
+  cursor: pointer;
+  position: relative;
+  left: 35px;
+}

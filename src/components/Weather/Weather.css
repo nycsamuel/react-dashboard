@@ -2,3 +2,12 @@
   margin-left: 5px;
   content: "\2109";
 }
+
+#weather-input {
+  border-radius: 5px;
+  padding: 13px 0 13px 45px;
+}
+
+.search-container {
+  color: grey;
+}

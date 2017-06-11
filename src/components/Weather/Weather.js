@@ -44,9 +44,16 @@ export default class Weather extends Component {
 
   render() {
     return (
-      <div>
-        <h1>{this.state.name}</h1>
-        <p><img src={this.state.icon} alt="Weather Icon"/> {this.state.temp} <span id="fahrenheit">&#8457;</span></p>
+      <div className="weather-wrapper">
+        <div className="weather-info">
+          <h1>{this.state.name}</h1>
+          <p><img src={this.state.icon} alt="Weather Icon"/> {this.state.temp} <span id="fahrenheit">&#8457;</span></p>
+        </div>
+
+        <div className="search-container">
+          <a className="btn"><i className="fa fa-search" id="search-icon"></i></a>
+          <input type="text" id="weather-input"/>
+        </div>
       </div>
     );
   }
