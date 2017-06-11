@@ -1,3 +1,8 @@
+:root {
+  --martel: 'Martel Sans', sans-serif;
+  --raleway: 'Raleway', sans-serif;
+}
+
 img { vertical-align: middle }
 
 .hide { display: none; }

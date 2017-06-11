@@ -63,8 +63,8 @@ export default class Weather extends Component {
         </div>
         
         <div className="weather-info">
-          <h1>{this.state.name}</h1>
-          <p className={this.state.display}><img src={this.state.icon} alt="Weather Icon"/> {this.state.temp} <span id="fahrenheit">&#8457;</span></p>
+          <span className="city-name">{this.state.name}</span>
+          <span className={`${this.state.display} temp-info`}><img id="weather-icon" src={this.state.icon} alt="Weather Icon"/><span id="temp-value">{this.state.temp}</span><span id="fahrenheit">&#8457;</span></span>
         </div>
       </div>
     );
