@@ -1,8 +1,9 @@
 const fetch = require('node-fetch');
 
 function current(req, res, next) {
-  let city = 'flushing';
-  const weatherURL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${process.env.WEATHER_KEY}`
+  console.log('request params ** ', req.params);
+
+  const weatherURL = `http://api.openweathermap.org/data/2.5/weather?zip=${req.params.zip},us&APPID=${process.env.WEATHER_KEY}`
   fetch(`${weatherURL}`)
     .then(res => res.json())
     .then(data => {

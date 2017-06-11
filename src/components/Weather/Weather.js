@@ -8,16 +8,12 @@ export default class Weather extends Component {
       name: '',
       temp: '',
       icon: '',
+      display: 'hide',
     };
   }
 
-  componentDidMount() {
-    this.getWeather();
-  }
-
-  getWeather() {
-    console.log('make api call to server');
-    fetch('/api/weather')
+  getWeather(val) {
+    fetch(`/api/weather/${val}`)
       .then(res => res.json())
       .then(data => {
         console.log('weather data', data);
@@ -26,11 +22,22 @@ export default class Weather extends Component {
           name: data.name,
           temp: this.convertToFah(data.main.temp),
           icon: this.iconURL(data.weather[0].icon),
+          display: 'true',
         });
       })
       .catch(error => console.log('getWeather error', error));
+  }
 
-    console.log('after fetch');
+  handleKeyPress(event) {
+    let weatherInput = document.getElementById('weather-input');
+    if (event.key === 'Enter') {
+      this.getWeather(weatherInput.value);
+    } else if (event.type === 'click') {
+      // check if the input is empty
+      if (weatherInput.value.trim() !== '') {
+        this.getWeather(weatherInput.value);
+      }
+    }
   }
 
   iconURL(icon) {
@@ -45,14 +52,19 @@ export default class Weather extends Component {
   render() {
     return (
       <div className="weather-wrapper">
+        <div className="search-container">
+          <a className="btn" onClick={this.handleKeyPress.bind(this)} ><i className="fa fa-search" id="search-icon"></i></a>
+          <input 
+            type="text" 
+            placeholder="Search City or Zip Code" 
+            id="weather-input"
+            onKeyPress={this.handleKeyPress.bind(this)}
+          />
+        </div>
+        
         <div className="weather-info">
           <h1>{this.state.name}</h1>
-          <p><img src={this.state.icon} alt="Weather Icon"/> {this.state.temp} <span id="fahrenheit">&#8457;</span></p>
-        </div>
-
-        <div className="search-container">
-          <a className="btn"><i className="fa fa-search" id="search-icon"></i></a>
-          <input type="text" id="weather-input"/>
+          <p className={this.state.display}><img src={this.state.icon} alt="Weather Icon"/> {this.state.temp} <span id="fahrenheit">&#8457;</span></p>
         </div>
       </div>
     );

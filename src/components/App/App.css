@@ -1,7 +1,8 @@
 img { vertical-align: middle }
 
+.hide { display: none; }
+.show { display: initial; }
+
 a.btn {
   cursor: pointer;
-  position: relative;
-  left: 35px;
 }

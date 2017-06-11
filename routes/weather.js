@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const weather = require('../services/weather.js');
 
-router.get('/', weather.current, (req, res) => {
+router.get('/:zip', weather.current, (req, res) => {
   res.json(res.currentWeather);
 });
 

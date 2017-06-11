@@ -4,10 +4,17 @@
 }
 
 #weather-input {
-  border-radius: 5px;
-  padding: 13px 0 13px 45px;
+  border: 1px solid black;
+  border-radius: 50px;
+  padding: 13px 0 13px 50px;
 }
+#weather-input:focus { outline: none; }
 
 .search-container {
   color: grey;
+}
+
+a.btn {
+  position: relative;
+  left: 35px;
 }
