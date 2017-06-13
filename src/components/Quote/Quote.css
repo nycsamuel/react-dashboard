@@ -1,11 +1,17 @@
 .quote-container {
-  width: 50%;
+  width: 70%;
+  /*background-color: rgba(230, 230, 230, .2);*/
+  color: white;
+  font-family: var(--martel);
+  margin: auto;
+  padding: 2em 0 1em 0;
+  text-align: center;
+  position: absolute;
+  top: 40%;
+  left: 0;
+  right: 0;
 }
 
 .q-text {
   text-align: center;
-}
-
-.q-author {
-  text-align: right;
 }
