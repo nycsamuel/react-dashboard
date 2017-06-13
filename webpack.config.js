@@ -11,7 +11,7 @@ const BUILD_DIR = path.resolve(__dirname, 'dist');
 module.exports = {
   entry: {
     app: `${APP_DIR}/index.js`,
-    // vendor: `${APP_DIR}/vendor/moment.js`,
+    vendor: `${APP_DIR}/vendor/moment.js`,
     // vendor: 'moment',
   },
   output: {
