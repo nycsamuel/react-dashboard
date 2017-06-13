@@ -1,9 +1,9 @@
 .weather-container {
-  width: 100%;
+  width: 98%;
   /*background-color: rgba(230, 230, 230, .2);*/
   color: white;
   padding: 2em 0 1em 0;
-  text-align: center;
+  text-align: right;
   position: absolute;
   top: 0;
   left: 0;
@@ -12,13 +12,17 @@
 }
 
 .weather-info {
-  font-size: 2em;
-  margin: 1em 0;
+  font-size: 1.2em;
 }
 
 #temp-value {
   font-size: 1.12em;
 }
+
+.temp-info {
+  margin-right: 2em;
+}
+
 #fahrenheit {
   content: "\2109";
 }
@@ -42,3 +46,5 @@ a.btn {
   position: relative;
   left: 35px;
 }
+
+.city-name { font-size: 1.3em; }

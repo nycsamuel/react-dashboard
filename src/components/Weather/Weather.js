@@ -25,7 +25,7 @@ export default class Weather extends Component {
           name: data.name,
           temp: this.convertToFah(data.main.temp),
           icon: this.iconURL(data.weather[0].icon),
-          display: 'true',
+          display: 'show',
         });
       })
       .catch(error => console.log('getWeather error', error));
@@ -69,7 +69,8 @@ export default class Weather extends Component {
         
         <div className="weather-info">
           <span className="city-name">{this.state.name}</span>
-          <span className={`${this.state.display} temp-info`}><img id="weather-icon" src={this.state.icon} alt="Weather Icon"/><span id="temp-value">{this.state.temp}</span><span id="fahrenheit">&#8457;</span></span>
+          <span className={`${this.state.display} weather-icon-wrapper`}><img id="weather-icon" src={this.state.icon} alt="Weather Icon"/></span> <br/>
+          <span className={`${this.state.display} temp-info`}><span id="temp-value">{this.state.temp}</span><span id="fahrenheit">&#8457;</span></span>
         </div>
       </div>
     );
