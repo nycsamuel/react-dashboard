@@ -12,5 +12,6 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'dist')));
 
 app.use('/api/weather', require('./routes/weather.js'));
+app.use('/api/quotes', require('./routes/quotes.js'));
 
 app.listen(PORT, () => console.log('server listening on', PORT));

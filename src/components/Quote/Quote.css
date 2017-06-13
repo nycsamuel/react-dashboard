@@ -1,0 +1,11 @@
+.quote-container {
+  width: 50%;
+}
+
+.q-text {
+  text-align: center;
+}
+
+.q-author {
+  text-align: right;
+}

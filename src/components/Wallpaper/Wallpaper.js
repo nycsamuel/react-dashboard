@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import style from './Wallpaper.css';
 
+import Quote from '../Quote/Quote.js';
 import Weather from '../Weather/Weather.js';
 
 export default class Wallpaper extends Component {
@@ -30,9 +31,10 @@ export default class Wallpaper extends Component {
     return (
       <div className="wallpaper-container">
         <div id="wallpaper"></div>
-        <div className="weather-container">
-          <Weather />
-        </div>
+
+        <Weather />
+        <Quote quote={this.props.quote} />
+
       </div>
     );
   }

@@ -56,7 +56,7 @@ export default class Weather extends Component {
 
   render() {
     return (
-      <div className="weather-wrapper">
+      <div className="weather-container">
         <div className="search-container">
           <a className="btn" onClick={this.handleKeyPress.bind(this)} ><i className="fa fa-search" id="search-icon"></i></a>
           <input 
