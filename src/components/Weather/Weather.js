@@ -13,7 +13,10 @@ export default class Weather extends Component {
   }
 
   getWeather(val) {
-    fetch(`/api/weather/${val}`)
+    // check val is zip or city
+    let param = isNaN(Number(val)) ? 'city' : 'zip';
+    console.log('param', param);
+    fetch(`/api/weather/${param}/${val}`)
       .then(res => res.json())
       .then(data => {
         console.log('weather data', data);
@@ -32,10 +35,12 @@ export default class Weather extends Component {
     let weatherInput = document.getElementById('weather-input');
     if (event.key === 'Enter') {
       this.getWeather(weatherInput.value);
+      weatherInput.value = ''; // clear
     } else if (event.type === 'click') {
       // check if the input is empty
       if (weatherInput.value.trim() !== '') {
         this.getWeather(weatherInput.value);
+        weatherInput.value = ''; // clear
       }
     }
   }
