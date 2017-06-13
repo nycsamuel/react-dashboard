@@ -12,3 +12,7 @@ img { vertical-align: middle }
 a.btn {
   cursor: pointer;
 }
+
+.text-shadow {
+  text-shadow: 3px 3px black;
+}

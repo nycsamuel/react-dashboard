@@ -4,7 +4,7 @@ import style from './Time.css';
 const Time = props => {
   return (
     <div className="time-container">
-      <h1>{props.time}</h1>
+      <h1 className="text-shadow">{props.time}</h1>
     </div>
   );
 }
