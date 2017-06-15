@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import style from './Weather.css';
-import { CSSTransitionGroup } from 'react-transition-group';
-import TransitionGroup from 'react-transition-group/TransitionGroup';
+
+import {
+  TransitionMotion, 
+  Motion,
+  spring, 
+  presets, 
+} from 'react-motion';
 
 export default class Weather extends Component {
   constructor() {
@@ -84,8 +89,7 @@ export default class Weather extends Component {
             <i className="fa fa-search" id="search-icon"></i>
           </a>
         </div>
-
-        
+                
         <div className="weather-info">
           <span className="city-name text-shadow">{this.state.name}</span>
           <span className={`${this.state.weatherDisplay} weather-icon-wrapper`}><img id="weather-icon" src={this.state.icon} alt="Weather Icon"/></span> <br/>
