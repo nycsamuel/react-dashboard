@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import style from './Weather.css';
 
-import {
-  TransitionMotion, 
-  Motion,
-  spring, 
-  presets, 
-} from 'react-motion';
+import Search from '../Search/Search.js';
+
+// import {
+//   TransitionMotion, 
+//   Motion,
+//   spring, 
+//   presets, 
+// } from 'react-motion';
+import { CSSTransitionGroup } from 'react-transition-group';
 
 export default class Weather extends Component {
   constructor() {
@@ -86,9 +89,17 @@ export default class Weather extends Component {
             onMouseEnter={this.mouseEnter.bind(this)} 
             onMouseLeave={this.mouseLeave.bind(this)} 
             onClick={this.handleKeyPress.bind(this)} >
-            <i className="fa fa-search" id="search-icon"></i>
+            <i className="text-shadow fa fa-search" id="search-icon"></i>
           </a>
         </div>
+        
+        <CSSTransitionGroup
+          transitionName='fade'
+          transitionEnterTimeout={1000}
+          transitionLeaveTimeout={500}
+        >
+          <Search key='one' />
+        </CSSTransitionGroup>
                 
         <div className="weather-info">
           <span className="city-name text-shadow">{this.state.name}</span>
