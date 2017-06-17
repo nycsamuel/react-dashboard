@@ -2,7 +2,7 @@
   width: 98%;
   /*background-color: rgba(230, 230, 230, .2);*/
   color: white;
-  padding: 2em 0 1em 0;
+  /*padding: 2em 0 1em 0;*/
   text-align: right;
   position: absolute;
   top: 0;
@@ -20,7 +20,7 @@
 }
 
 .temp-info {
-  margin-right: 4em;
+  margin-right: 3em;
 }
 
 #fahrenheit {
@@ -30,13 +30,13 @@
 #weather-input {
   border: 1px solid black;
   border-radius: 50px;
-  padding: 13px 0 13px 15px;
+  padding: 13px 25px 13px 15px;
   text-align: center;
-  width: 290px;
+  /*width: 290px;*/
 }
 #weather-input:focus { outline: none; }
 
-#weather-icon { width: 100px; }
+#weather-icon { width: 70px; }
 
 .search-container {
   color: white;
@@ -44,27 +44,9 @@
 
 a.btn {
   position: relative;
-  /*left: 35px;*/
+  top: 35px;
+  right: 15px;
 }
 
 .city-name { font-size: 1.3em; }
 
-
-
-.fade-enter {
-  opacity: 0.01;
-}
-
-.fade-enter-active {
-  opacity: 1;
-  transition: opacity 1s;
-}
-
-.fade-leave {
-  opacity: 1;
-}
-
-.fade-leave-active {
-  opacity: 0;
-  transition: opacity 1s;
-}

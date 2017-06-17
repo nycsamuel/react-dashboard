@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import style from './Weather.css';
 
-import Search from '../Search/Search.js';
-
-// import {
-//   TransitionMotion, 
-//   Motion,
-//   spring, 
-//   presets, 
-// } from 'react-motion';
-import { CSSTransitionGroup } from 'react-transition-group';
+import {
+  TransitionMotion, 
+  Motion,
+  spring, 
+  presets, 
+} from 'react-motion';
 
 export default class Weather extends Component {
   constructor() {
@@ -20,6 +17,7 @@ export default class Weather extends Component {
       icon: '',
       weatherDisplay: 'hide',
       searchDisplay: 'hide',
+      visible: false,
     };
   }
 
@@ -47,12 +45,16 @@ export default class Weather extends Component {
     if (event.key === 'Enter') {
       this.getWeather(weatherInput.value);
       weatherInput.value = ''; // clear
+      this.setState({ visible: false });
     } else if (event.type === 'click') {
       // check if the input is empty
       if (weatherInput.value.trim() !== '') {
         this.getWeather(weatherInput.value);
         weatherInput.value = ''; // clear
+        this.setState({ visible: false });
       }
+
+      this.setState({ visible: !this.state.visible }); // toggle visibility
     }
   }
 
@@ -65,41 +67,28 @@ export default class Weather extends Component {
     return ((k - 273.15) * 1.80 + 32).toFixed(1);
   }
 
-  mouseEnter() {
-    // console.log('mouse enter event');
-    this.setState({ searchDisplay: 'show' });
-  }
-  mouseLeave() {
-    this.setState({ searchDisplay: 'hide' });
-  }
-
   render() {
     return (
       <div className="weather-container">
         <div className="search-container">
-          <input 
-            className={this.state.searchDisplay}
-            type="text" 
-            placeholder="Search City or Zip Code" 
-            id="weather-input"
-            onKeyPress={this.handleKeyPress.bind(this)}
-          />
           <a 
             className="btn" 
-            onMouseEnter={this.mouseEnter.bind(this)} 
-            onMouseLeave={this.mouseLeave.bind(this)} 
             onClick={this.handleKeyPress.bind(this)} >
             <i className="text-shadow fa fa-search" id="search-icon"></i>
           </a>
         </div>
         
-        <CSSTransitionGroup
-          transitionName='fade'
-          transitionEnterTimeout={1000}
-          transitionLeaveTimeout={500}
-        >
-          <Search key='one' />
-        </CSSTransitionGroup>
+        <Motion style={{ x: spring(this.state.visible ? 300 : 0) }} >
+        {({x}) => 
+          <input 
+            type="text" 
+            placeholder="Search City or Zip Code" 
+            id="weather-input"
+            onKeyPress={this.handleKeyPress.bind(this)}
+            style={{ width: `${x}px` }}
+          />
+        }
+        </Motion>
                 
         <div className="weather-info">
           <span className="city-name text-shadow">{this.state.name}</span>
