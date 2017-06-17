@@ -23,7 +23,7 @@ export default class App extends Component {
   updateTime() {
     let intervalID = setInterval(() => {
       this.setState({ time: moment().format('h:mm A') });
-    }, 1000);
+    }, 1000*60);
   }
 
   getQuote() {
