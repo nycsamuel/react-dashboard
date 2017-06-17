@@ -17,6 +17,13 @@ export default class App extends Component {
 
   componentDidMount() {
     this.getQuote();
+    this.updateTime();
+  }
+
+  updateTime() {
+    let intervalID = setInterval(() => {
+      this.setState({ time: moment().format('h:mm A') });
+    }, 1000);
   }
 
   getQuote() {
