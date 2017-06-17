@@ -74,7 +74,7 @@ export default class Weather extends Component {
           <a 
             className="btn" 
             onClick={this.handleKeyPress.bind(this)} >
-            <i className="text-shadow fa fa-search" id="search-icon"></i>
+            <i className="fa fa-search" id="search-icon"></i>
           </a>
         </div>
         

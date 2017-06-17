@@ -39,13 +39,13 @@
 #weather-icon { width: 70px; }
 
 .search-container {
-  color: white;
+  color: grey;
 }
 
 a.btn {
   position: relative;
-  top: 35px;
-  right: 15px;
+  top: 39px;
+  right: 11px;
 }
 
 .city-name { font-size: 1.3em; }
