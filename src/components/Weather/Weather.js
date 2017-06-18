@@ -41,6 +41,8 @@ export default class Weather extends Component {
   }
 
   handleKeyPress(event) {
+    // console.log(event.currentTarget.children[0].classList);
+    event.currentTarget.children[0].classList.toggle('active');
     let weatherInput = document.getElementById('weather-input');
     if (event.key === 'Enter') {
       this.getWeather(weatherInput.value);

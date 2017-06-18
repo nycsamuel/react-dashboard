@@ -17,31 +17,36 @@ export default class Setting extends Component {
     };
   }
 
-  toggleSettingView() {
+  toggleSetting() {
+    console.log('heyyy hit!');
+  }
+
+  toggleSettingView(event) {
     this.setState({ 
       visible: !this.state.visible,
       display: !this.state.display,
     });
+    // console.log(event.target.classList);
+    event.target.classList.toggle('active');
   }
+
 
   render() {
     return (
       <div className="setting-container">
-        <Motion style={{ x: spring(this.state.visible ? 100 : 0), y: spring(this.state.visible ? 200 : 0) }} >
+        <Motion style={{ x: spring(this.state.visible ? 1 : 0), y: spring(this.state.visible ? 100 : 0, { stiffness: 300, damping: 13 }) }} >
           {({x, y}) => 
             <div 
               className='setting-icon-container'
-              onClick={this.toggleSettingView.bind(this)} 
               style={{ 
-                  width: `${x}px`,
                   height: `${y}px`,
+                  // width: `${x}px`,
                   // backgroundColor: 'rgba(255, 255, 255, .8)',
                 }} >
-              <i className="fa fa-cogs" id='setting-icon'></i>
-              <ul className={`${this.state.display ? 'show' : 'hide'} setting-list` }>
-                <li>one</li>
-                <li>two</li>
-                <li>three</li>
+              <i onClick={this.toggleSettingView.bind(this)} className='fa fa-cogs btn' id='setting-icon'></i>
+              <ul style={{ opacity: `${x}` }} className={`${this.state.display ? 'show active' : 'hide'} setting-list` }>
+                <li onClick={this.toggleSetting.bind(this)} className='btn'><i id='clock-icon' className="fa fa-clock-o"></i></li>
+                <li onClick={this.toggleSetting.bind(this)} className='btn'><i id='thermo-icon' className="fa fa-thermometer-empty"></i></li>
               </ul>
             </div>
           }

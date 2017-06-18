@@ -8,18 +8,31 @@
 .setting-icon-container {
   background-color: rgba(255, 255, 255, 1);
   border: 1px solid black;
-  border-radius: 50px;
+  border-radius: 25px;
   padding: 1.3em;
+  width: 3px;
 }
 
-#setting-icon {
+#setting-icon, #thermo-icon, #clock-icon {
   color: grey;
   font-size: 1.2em;
   position: relative;
+  z-index: 10;
+}
+
+#setting-icon {
   top: -10px;
-  left: -13px;
+  left: -11px;
+}
+#clock-icon {
+  left: -9px;
+}
+#thermo-icon {
+  left: -5px;
 }
 
 .setting-list li {
-  margin-left: 1em;
+  /*margin-left: 1em;*/
+  list-style: none;
+  margin-bottom: 10px;
 }

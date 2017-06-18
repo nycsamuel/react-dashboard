@@ -8,11 +8,6 @@ img { vertical-align: middle }
 
 .hide { display: none; }
 .show { display: initial; }
-
-a.btn {
-  cursor: pointer;
-}
-
-.text-shadow {
-  text-shadow: 3px 3px black;
-}
+.active { color: black !important; }
+.btn { cursor: pointer; }
+.text-shadow { text-shadow: 3px 3px black; }
