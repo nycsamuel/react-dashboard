@@ -29,7 +29,6 @@ export default class App extends Component {
   }
 
   getQuote() {
-    // console.log(moment().format('h:mm'))
     fetch('/api/quotes')
       .then(res => res.json())
       .then(data => {
@@ -40,7 +39,6 @@ export default class App extends Component {
   }
 
   updateClockSetting(event) {
-    // console.log('triggered clock setting!', event);
     this.setState({ amSetting: !this.state.amSetting });
   }
   

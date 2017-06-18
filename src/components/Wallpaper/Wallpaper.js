@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import style from './Wallpaper.css';
 
+import Google from '../Google/Google.js';
 import Quote from '../Quote/Quote.js';
 import Setting from '../Setting/Setting.js';
 import Time from '../Time/Time.js';
@@ -38,6 +39,8 @@ export default class Wallpaper extends Component {
         <Setting updateClockSetting={this.props.updateClockSetting} />
         <Time time={this.props.time} />
         <Quote quote={this.props.quote} />
+
+        <Google />
 
       </div>
     );
