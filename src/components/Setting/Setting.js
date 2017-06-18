@@ -17,8 +17,8 @@ export default class Setting extends Component {
     };
   }
 
-  toggleSetting() {
-    console.log('heyyy hit!');
+  toggleSetting(event) {
+    event.target.classList.toggle('active');    
   }
 
   toggleSettingView(event) {
@@ -26,7 +26,6 @@ export default class Setting extends Component {
       visible: !this.state.visible,
       display: !this.state.display,
     });
-    // console.log(event.target.classList);
     event.target.classList.toggle('active');
   }
 
@@ -45,8 +44,8 @@ export default class Setting extends Component {
                 }} >
               <i onClick={this.toggleSettingView.bind(this)} className='fa fa-cogs btn' id='setting-icon'></i>
               <ul style={{ opacity: `${x}` }} className={`${this.state.display ? 'show active' : 'hide'} setting-list` }>
-                <li onClick={this.toggleSetting.bind(this)} className='btn'><i id='clock-icon' className="fa fa-clock-o"></i></li>
-                <li onClick={this.toggleSetting.bind(this)} className='btn'><i id='thermo-icon' className="fa fa-thermometer-empty"></i></li>
+                <li className='btn'><i onClick={this.toggleSetting.bind(this)} id='clock-icon' className="fa fa-clock-o"></i></li>
+                <li className='btn'><i onClick={this.toggleSetting.bind(this)} id='thermo-icon' className="fa fa-thermometer-empty"></i></li>
               </ul>
             </div>
           }
