@@ -35,7 +35,7 @@ export default class Wallpaper extends Component {
         <div id="wallpaper"></div>
 
         <Weather />
-        <Setting />
+        <Setting updateClockSetting={this.props.updateClockSetting} />
         <Time time={this.props.time} />
         <Quote quote={this.props.quote} />
 

@@ -19,6 +19,10 @@ export default class Setting extends Component {
 
   toggleSetting(event) {
     event.target.classList.toggle('active');    
+
+    if (event.target.classList.contains('fa-clock-o')) {
+      this.props.updateClockSetting(event);
+    }
   }
 
   toggleSettingView(event) {
@@ -33,7 +37,7 @@ export default class Setting extends Component {
   render() {
     return (
       <div className="setting-container">
-        <Motion style={{ x: spring(this.state.visible ? 1 : 0), y: spring(this.state.visible ? 100 : 0, { stiffness: 300, damping: 13 }) }} >
+        <Motion style={{ x: spring(this.state.visible ? 1 : 0), y: spring(this.state.visible ? 60 : 0, { stiffness: 300, damping: 13 }) }} >
           {({x, y}) => 
             <div 
               className='setting-icon-container'
@@ -45,7 +49,6 @@ export default class Setting extends Component {
               <i onClick={this.toggleSettingView.bind(this)} className='fa fa-cogs btn' id='setting-icon'></i>
               <ul style={{ opacity: `${x}` }} className={`${this.state.display ? 'show active' : 'hide'} setting-list` }>
                 <li className='btn'><i onClick={this.toggleSetting.bind(this)} id='clock-icon' className="fa fa-clock-o"></i></li>
-                <li className='btn'><i onClick={this.toggleSetting.bind(this)} id='thermo-icon' className="fa fa-thermometer-empty"></i></li>
               </ul>
             </div>
           }

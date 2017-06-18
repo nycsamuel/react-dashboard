@@ -42,7 +42,6 @@ export default class Weather extends Component {
 
   handleKeyPress(event) {
     // console.log(event.currentTarget.children[0].classList);
-    event.currentTarget.children[0].classList.toggle('active');
     let weatherInput = document.getElementById('weather-input');
     if (event.key === 'Enter') {
       this.getWeather(weatherInput.value);
@@ -50,6 +49,8 @@ export default class Weather extends Component {
       this.setState({ visible: false });
     } else if (event.type === 'click') {
       // check if the input is empty
+      event.currentTarget.children[0].classList.toggle('active');
+      
       if (weatherInput.value.trim() !== '') {
         this.getWeather(weatherInput.value);
         weatherInput.value = ''; // clear
@@ -76,7 +77,7 @@ export default class Weather extends Component {
           <a 
             className="btn" 
             onClick={this.handleKeyPress.bind(this)} >
-            <i className="fa fa-search" id="search-icon"></i>
+            <i className="fa fa-thermometer-empty" id="thermo-icon"></i>
           </a>
         </div>
         

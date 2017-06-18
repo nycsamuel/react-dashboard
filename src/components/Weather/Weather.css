@@ -36,7 +36,11 @@
 }
 #weather-input:focus { outline: none; }
 
-#weather-icon { width: 70px; }
+#thermo-icon { 
+  width: 70px; 
+  left: -2px;
+  top: 1px;
+}
 
 .search-container {
   color: grey;
