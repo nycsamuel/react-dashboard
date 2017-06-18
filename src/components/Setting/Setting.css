@@ -1,0 +1,25 @@
+.setting-container {
+  font-family: var(--martel);
+  position: absolute;
+  top: 25px;
+  left: 20px;
+}
+
+.setting-icon-container {
+  background-color: rgba(255, 255, 255, 1);
+  border: 1px solid black;
+  border-radius: 50px;
+  padding: 1.3em;
+}
+
+#setting-icon {
+  color: grey;
+  font-size: 1.2em;
+  position: relative;
+  top: -10px;
+  left: -13px;
+}
+
+.setting-list li {
+  margin-left: 1em;
+}
