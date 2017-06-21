@@ -6,7 +6,7 @@ CREATE TABLE setting(
   userID SERIAL PRIMARY KEY,
   location VARCHAR (50),
   doNotShowAgain BOOLEAN,
-  showAMPM BOOLEAN,
+  showAMPM BOOLEAN
 );
 
 COMMIT;

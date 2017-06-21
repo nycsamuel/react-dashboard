@@ -18,8 +18,18 @@ export default class App extends Component {
   }
 
   componentDidMount() {
+    this.getSettings();
     this.getQuote();
     this.updateTime();
+  }
+
+  getSettings() {
+    fetch('/api/setting')
+      .then(res => res.json())
+      .then(data => {
+        console.log('data setting', data);
+      })
+      .catch(err => console.log('getSettings err', err));
   }
 
   updateTime() {
