@@ -14,7 +14,8 @@ const db = require('../db/db.js');
 function getSettings(req, res, next) {
   db.any('SELECT * FROM setting')
     .then(data => {
-      res.settings;
+      console.log('setting data', data);
+      res.settings = data;
       next();
     })
     .catch(err => console.log('psql error', err));
