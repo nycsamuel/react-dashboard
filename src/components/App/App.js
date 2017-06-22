@@ -11,9 +11,11 @@ export default class App extends Component {
     super();
     this.state = {
       quote: '',
-      amSetting: true,
       time: moment().format('h:mm A'),
       time2: moment().format('H:mm'),
+      doNotShowAgain: false,
+      showAMPM: true,
+      location: '',
     };
   }
 
@@ -28,13 +30,18 @@ export default class App extends Component {
       .then(res => res.json())
       .then(data => {
         console.log('data setting', data);
+        this.setState({
+          showAMPM: data.showampm,
+          doNotShowAgain: data.donotshowagain,
+          location: data.location,
+        });
       })
       .catch(err => console.log('getSettings err', err));
   }
 
   updateTime() {
     let intervalID = setInterval(() => {
-      this.state.amSetting ? this.setState({ time: moment().format('h:mm A') }) : this.setState({ time2: moment().format('H:mm') })
+      this.state.showAMPM ? this.setState({ time: moment().format('h:mm A') }) : this.setState({ time2: moment().format('H:mm') })
     }, 1000*60);
   }
 
@@ -49,7 +56,7 @@ export default class App extends Component {
   }
 
   updateClockSetting(event) {
-    this.setState({ amSetting: !this.state.amSetting });
+    this.setState({ showAMPM: !this.state.showAMPM });
   }
   
   render() {
@@ -57,7 +64,7 @@ export default class App extends Component {
       <div className="app-container">
         <Wallpaper 
           quote={this.state.quote} 
-          time={this.state.amSetting ? this.state.time : this.state.time2}
+          time={this.state.showAMPM ? this.state.time : this.state.time2}
           updateClockSetting={this.updateClockSetting.bind(this)}
         />
       </div>

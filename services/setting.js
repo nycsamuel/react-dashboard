@@ -12,7 +12,7 @@ const db = require('../db/db.js');
 // const db = pgp(connection);
 
 function getSettings(req, res, next) {
-  db.any('SELECT * FROM setting')
+  db.one('SELECT * FROM setting')
     .then(data => {
       console.log('setting data', data);
       res.settings = data;
