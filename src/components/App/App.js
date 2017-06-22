@@ -11,8 +11,9 @@ export default class App extends Component {
     super();
     this.state = {
       quote: '',
+      // time: moment().format('h:mm A'),
+      // time2: moment().format('H:mm'),
       time: moment().format('h:mm A'),
-      time2: moment().format('H:mm'),
       doNotShowAgain: false,
       showAMPM: true,
       location: '',
@@ -41,7 +42,9 @@ export default class App extends Component {
 
   updateTime() {
     let intervalID = setInterval(() => {
-      this.state.showAMPM ? this.setState({ time: moment().format('h:mm A') }) : this.setState({ time2: moment().format('H:mm') })
+      this.setState({
+        time: (this.state.showAMPM) ? moment().format('h:mm A') : moment().format('H:mm'),
+      });
     }, 1000*60);
   }
 
@@ -56,7 +59,11 @@ export default class App extends Component {
   }
 
   updateClockSetting(event) {
-    this.setState({ showAMPM: !this.state.showAMPM });
+    this.setState({ showAMPM: !this.state.showAMPM }, () => {
+      this.setState({
+        time: (this.state.showAMPM) ? moment().format('h:mm A') : moment().format('H:mm'),
+      });
+    });
   }
   
   render() {
@@ -64,7 +71,7 @@ export default class App extends Component {
       <div className="app-container">
         <Wallpaper 
           quote={this.state.quote} 
-          time={this.state.showAMPM ? this.state.time : this.state.time2}
+          time={this.state.time}
           updateClockSetting={this.updateClockSetting.bind(this)}
         />
       </div>
