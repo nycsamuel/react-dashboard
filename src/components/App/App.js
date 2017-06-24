@@ -62,6 +62,15 @@ export default class App extends Component {
         time: (this.state.showAMPM) ? moment().format('h:mm A') : moment().format('H:mm'),
       });
     });
+    // change setting in database
+    let payload = this.state;
+    fetch('/api/setting', {
+      headers: { 'Content-Type' : 'application/json'},
+      method: 'post',
+      body: JSON.stringify(payload),
+    })
+      .then(console.log('settings changed', data))
+      .catch(err => console.log('failed post for modifying setting', err));
   }
   
   render() {
