@@ -35,6 +35,9 @@
   /*width: 290px;*/
 }
 #weather-input:focus { outline: none; }
+#weather-input:focus::-webkit-input-placeholder {
+  opacity: 0;
+}
 
 #thermo-icon { 
   width: 70px; 

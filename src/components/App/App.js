@@ -11,8 +11,6 @@ export default class App extends Component {
     super();
     this.state = {
       quote: '',
-      // time: moment().format('h:mm A'),
-      // time2: moment().format('H:mm'),
       time: moment().format('h:mm A'),
       doNotShowAgain: false,
       showAMPM: true,
