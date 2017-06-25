@@ -1,16 +1,5 @@
 const db = require('../db/db.js');
 
-// const pgp        = require('pg-promise');
-// const connection = {
-//   host: process.env.PG_HOST,
-//   port: process.env.PG_PORT,
-//   database: process.env.PG_DB,
-//   user: process.env.PG_USER,
-//   password: process.env.PG_PW,
-// };
-
-// const db = pgp(connection);
-
 function getSettings(req, res, next) {
   db.one('SELECT * FROM setting')
     .then(data => {
@@ -21,6 +10,16 @@ function getSettings(req, res, next) {
     .catch(err => console.log('psql error', err));
 }
 
+function saveSettings(req, res, next) {
+  console.log('saving setting', req.body);
+  db.none(`UPDATE setting SET location = $1, donotshowagain = $2, showampm = $3 WHERE userid=1`, [
+      req.body.location, req.body.donotshowagain, req.body.showampm
+    ])
+    .then(() => next())
+    .catch(err => next(err));
+}
+
 module.exports = {
   getSettings,
+  saveSettings,
 };

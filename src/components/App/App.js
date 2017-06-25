@@ -16,6 +16,7 @@ export default class App extends Component {
       showAMPM: true,
       location: '',
     };
+    console.log('construct state', this.state);
   }
 
   componentDidMount() {
@@ -28,12 +29,12 @@ export default class App extends Component {
     fetch('/api/setting')
       .then(res => res.json())
       .then(data => {
-        console.log('data setting', data);
-        this.setState({
-          showAMPM: data.showampm,
-          doNotShowAgain: data.donotshowagain,
-          location: data.location,
-        });
+        console.log('get settings: ', data);
+        // this.setState({
+        //   showAMPM: data.showampm,
+        //   doNotShowAgain: data.donotshowagain,
+        //   location: data.location,
+        // });
       })
       .catch(err => console.log('getSettings err', err));
   }
@@ -57,19 +58,27 @@ export default class App extends Component {
   }
 
   updateClockSetting(event) {
-    this.setState({ showAMPM: !this.state.showAMPM }, () => {
-      this.setState({
-        time: (this.state.showAMPM) ? moment().format('h:mm A') : moment().format('H:mm'),
-      });
+    console.log('toggled clock setting', this.state);
+    this.setState({ showAMPM: !this.state.showAMPM }, this.toggleClock());
+  }
+
+  toggleClock() {
+    console.log('toggling!', this.state.showAMPM);
+    this.setState({
+      time: (this.state.showAMPM) ? moment().format('h:mm A') : moment().format('H:mm'),
     });
+    this.updateSettings();
+  }
+
+  updateSettings() {
     // change setting in database
-    let payload = this.state;
+    console.log('updateSettings function called');
     fetch('/api/setting', {
       headers: { 'Content-Type' : 'application/json'},
       method: 'post',
-      body: JSON.stringify(payload),
+      body: JSON.stringify(this.state),
     })
-      .then(console.log('settings changed', data))
+      .then(console.log('settings changed'))
       .catch(err => console.log('failed post for modifying setting', err));
   }
   
