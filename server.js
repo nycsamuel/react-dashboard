@@ -15,5 +15,9 @@ app.use('/api/setting', require('./routes/setting.js'));
 app.use('/api/quotes', require('./routes/quotes.js'));
 app.use('/api/weather', require('./routes/weather.js'));
 
+// error handling middleware
+app.use((err, req, res, next) => {
+  res.status(500).send('Something broke').end(next);
+});
 
 app.listen(PORT, () => console.log('server is listening on port: ', PORT));
