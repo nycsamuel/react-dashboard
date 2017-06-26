@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "rebuild": "webpack -d --progress --colors",
-    "watch": "webpack -d --progress --watch"
+    "prod": "NODE_ENV=production node server.js",
+    "postinstall": "webpack -p"
   },
   "author": "Samuel Na",
   "license": "ISC",
