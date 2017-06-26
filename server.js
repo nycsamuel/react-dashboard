@@ -11,6 +11,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'dist')));
 
+app.use('/', require('./src/index.js'));
 app.use('/api/setting', require('./routes/setting.js'));
 app.use('/api/quotes', require('./routes/quotes.js'));
 app.use('/api/weather', require('./routes/weather.js'));
