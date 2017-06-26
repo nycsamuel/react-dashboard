@@ -4,6 +4,7 @@
   "description": "Dashboard made with React",
   "main": "server.js",
   "scripts": {
+    "heroku-postbuild": "webpack -p",
     "start": "node server.js",
     "rebuild": "webpack -d --progress --colors",
     "watch": "webpack -d --progress --watch"
