@@ -78,7 +78,7 @@ export default class Weather extends Component {
           <a 
             className="btn" 
             onClick={this.handleKeyPress.bind(this)} >
-            <i className="fa fa-thermometer-empty" id="thermo-icon"></i>
+            <i title='Weather' className="fa fa-thermometer-4" id="thermo-icon"></i>
           </a>
         </div>
         

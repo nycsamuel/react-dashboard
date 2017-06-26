@@ -11,12 +11,12 @@ export default class App extends Component {
     super();
     this.state = {
       quote: '',
-      time: moment().format('h:mm A'),
+      timeAM: moment().format('h:mm A'),
+      time24: moment().format('H:mm'),
       doNotShowAgain: false,
       showAMPM: true,
       location: '',
     };
-    console.log('construct state', this.state);
   }
 
   componentDidMount() {
@@ -30,20 +30,23 @@ export default class App extends Component {
       .then(res => res.json())
       .then(data => {
         console.log('get settings: ', data);
-        // this.setState({
-        //   showAMPM: data.showampm,
-        //   doNotShowAgain: data.donotshowagain,
-        //   location: data.location,
-        // });
+        if (data.length > 0) {
+          console.log('setting data is not empty');
+          this.setState({
+            showAMPM: data[0].showampm,
+            doNotShowAgain: data[0].donotshowagain,
+            location: data[0].location,
+          });
+        } else {
+          console.log('empty setting');
+        }
       })
       .catch(err => console.log('getSettings err', err));
   }
 
   updateTime() {
     let intervalID = setInterval(() => {
-      this.setState({
-        time: (this.state.showAMPM) ? moment().format('h:mm A') : moment().format('H:mm'),
-      });
+      (this.state.showAMPM) ? this.setState({ timeAM: moment().format('h:mm A') }) : this.setState({ time24: moment().format('H:mm') });
     }, 1000*60);
   }
 
@@ -58,36 +61,38 @@ export default class App extends Component {
   }
 
   updateClockSetting(event) {
-    console.log('toggled clock setting', this.state);
-    this.setState({ showAMPM: !this.state.showAMPM }, this.toggleClock());
-  }
-
-  toggleClock() {
-    console.log('toggling!', this.state.showAMPM);
-    this.setState({
-      time: (this.state.showAMPM) ? moment().format('h:mm A') : moment().format('H:mm'),
-    });
-    this.updateSettings();
+    this.setState({ showAMPM: !this.state.showAMPM }, this.updateSettings);
   }
 
   updateSettings() {
     // change setting in database
+    let payload = {
+      location: this.state.location,
+      donotshowagain: this.state.doNotShowAgain,
+      showampm: this.state.showAMPM,
+    };
     console.log('updateSettings function called');
     fetch('/api/setting', {
       headers: { 'Content-Type' : 'application/json'},
       method: 'post',
-      body: JSON.stringify(this.state),
+      body: JSON.stringify(payload),
     })
-      .then(console.log('settings changed'))
+      .then()
       .catch(err => console.log('failed post for modifying setting', err));
   }
   
   render() {
+    let activeSettings = {
+      doNotShowAgain: this.state.doNotShowAgain,
+      showAMPM: this.state.showAMPM,
+    };
+
     return (
       <div className="app-container">
         <Wallpaper 
           quote={this.state.quote} 
-          time={this.state.time}
+          time={this.state.showAMPM ? this.state.timeAM : this.state.time24}
+          activeSettings={activeSettings}
           updateClockSetting={this.updateClockSetting.bind(this)}
         />
       </div>

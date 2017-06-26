@@ -9,12 +9,14 @@ import {
 } from 'react-motion';
 
 export default class Setting extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       visible: false,
       display: false,
     };
+
+    console.log('checking props', this.props.activeSettings);
   }
 
   toggleSetting(event) {
@@ -46,9 +48,9 @@ export default class Setting extends Component {
                   // width: `${x}px`,
                   // backgroundColor: 'rgba(255, 255, 255, .8)',
                 }} >
-              <i onClick={this.toggleSettingView.bind(this)} className='fa fa-cogs btn' id='setting-icon'></i>
+              <i title='Setting' onClick={this.toggleSettingView.bind(this)} className='fa fa-cogs btn' id='setting-icon'></i>
               <ul style={{ opacity: `${x}` }} className={`${this.state.display ? 'show active' : 'hide'} setting-list` }>
-                <li className='btn'><i onClick={this.toggleSetting.bind(this)} id='clock-icon' className="fa fa-clock-o"></i></li>
+                <li className='btn'><i title='Clock Format' onClick={this.toggleSetting.bind(this)} id='clock-icon' className={`${this.props.activeSettings.showAMPM ? 'active' : ''} fa fa-clock-o`}></i></li>
               </ul>
             </div>
           }

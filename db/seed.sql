@@ -1,1 +1,1 @@
-INSERT INTO setting(location, doNotShowAgain, showAMPM) VALUES('', false, true);
+INSERT INTO setting(location, doNotShowAgain, showAMPM) VALUES(NULL, false, false);
