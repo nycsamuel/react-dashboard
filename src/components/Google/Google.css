@@ -19,6 +19,7 @@
 }
 .search-google:focus { 
   outline: none; 
+  caret-color: red;
 }
 .search-google:focus::-webkit-input-placeholder {
   opacity: 0;

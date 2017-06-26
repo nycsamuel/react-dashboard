@@ -48,7 +48,7 @@ export default class Setting extends Component {
                   // width: `${x}px`,
                   // backgroundColor: 'rgba(255, 255, 255, .8)',
                 }} >
-              <i title='Setting' onClick={this.toggleSettingView.bind(this)} className='fa fa-cogs btn' id='setting-icon'></i>
+              <i title='Setting' onClick={this.toggleSettingView.bind(this)} className='fa fa-cog btn' id='setting-icon'></i>
               <ul style={{ opacity: `${x}` }} className={`${this.state.display ? 'show active' : 'hide'} setting-list` }>
                 <li className='btn'><i title='Clock Format' onClick={this.toggleSetting.bind(this)} id='clock-icon' className={`${this.props.activeSettings.showAMPM ? 'active' : ''} fa fa-clock-o`}></i></li>
               </ul>

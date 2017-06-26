@@ -15,14 +15,14 @@
 
 #setting-icon, #thermo-icon, #clock-icon {
   color: grey;
-  font-size: 1.2em;
+  font-size: 1.5em;
   position: relative;
   z-index: 10;
 }
 
 #setting-icon {
-  top: -10px;
-  left: -11px;
+  top: -14px;
+  left: -10px;
 }
 #clock-icon {
   left: -9px;
