@@ -20,7 +20,8 @@ module.exports = {
     filename: '[name].[hash].js', // for code splitting (vendor) with caching
     path: BUILD_DIR,
   },
-  devtool: 'cheap-eval-source-map',
+  // devtool: 'cheap-eval-source-map',
+  devtool: 'source-map',
   module: {
     rules: [
       { test: /\.txt$/, use: 'raw-loader' },
