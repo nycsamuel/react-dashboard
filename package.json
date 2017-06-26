@@ -4,7 +4,8 @@
   "description": "Dashboard made with React",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rm -rf dist && rm -rf node_modules",
+    "heroku-prebuild": "npm run clean -s && npm i --only=dev --ignore-scripts && webpack -p && rm -rf node_modules",
     "start": "node server.js",
     "rebuild": "webpack -d --progress --colors",
     "watch": "webpack -d --progress --watch"
