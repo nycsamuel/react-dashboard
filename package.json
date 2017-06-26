@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Dashboard made with React",
   "main": "server.js",
-  "engine": { "node": "6.6.0" },
   "scripts": {
     "start": "node server.js",
     "rebuild": "webpack -d --progress --colors",
