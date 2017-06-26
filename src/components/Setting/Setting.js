@@ -39,7 +39,7 @@ export default class Setting extends Component {
   render() {
     return (
       <div className="setting-container">
-        <Motion style={{ x: spring(this.state.visible ? 1 : 0), y: spring(this.state.visible ? 60 : 0, { stiffness: 300, damping: 13 }) }} >
+        <Motion style={{ x: spring(this.state.visible ? 1 : 0), y: spring(this.state.visible ? 75 : 0, { stiffness: 300, damping: 13 }) }} >
           {({x, y}) => 
             <div 
               className='setting-icon-container'
