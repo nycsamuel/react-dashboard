@@ -11,3 +11,31 @@ img { vertical-align: middle }
 .active { color: black !important; }
 .btn { cursor: pointer; }
 .text-shadow { text-shadow: 3px 3px black; }
+
+.modal {
+  width: 30vw;
+  height: 15vh;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(230, 230, 230, 1);
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 0px 0px 1px 5000px rgba(100,100,100,0.9);
+  padding: 1em;
+  text-align: center;
+}
+
+.modalBtn {
+  border: 1px solid black;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 1em;
+  padding: 8px 10px;
+}
+.modalBtn:hover {
+  background-color: rgba(34, 139, 34, .6);
+}

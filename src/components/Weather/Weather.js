@@ -9,8 +9,8 @@ import {
 } from 'react-motion';
 
 export default class Weather extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       name: '',
       temp: '',
@@ -48,6 +48,7 @@ export default class Weather extends Component {
       this.setState({ visible: false });
 
       event.currentTarget.previousSibling.children[0].children[0].classList.toggle('active')
+      this.props.toggleModal();
     } else if (event.type === 'click') {
       // check if the input is empty
       event.currentTarget.children[0].classList.toggle('active');
@@ -56,6 +57,7 @@ export default class Weather extends Component {
         this.getWeather(weatherInput.value);
         weatherInput.value = ''; // clear
         this.setState({ visible: false });
+        this.props.toggleModal();
       }
 
       this.setState({ visible: !this.state.visible }); // toggle visibility

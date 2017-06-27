@@ -16,6 +16,7 @@ export default class App extends Component {
       doNotShowAgain: false,
       showAMPM: true,
       location: '',
+      modalDisplay: false,
     };
   }
 
@@ -80,6 +81,21 @@ export default class App extends Component {
       .then()
       .catch(err => console.log('failed post for modifying setting', err));
   }
+
+  toggleModal(event) {
+    this.setState({ modalDisplay: !this.state.modalDisplay });
+  }
+
+  modalChoice(event) {
+    console.log('modal choice function', event.target.dataset.choice);
+    if (event.target.dataset.choice === 'yes') {
+      // save
+    } else if (event.target.dataset.choice === 'no') {
+      // dont save
+    } else {
+      // catch exceptions
+    }
+  }
   
   render() {
     let activeSettings = {
@@ -94,7 +110,14 @@ export default class App extends Component {
           time={this.state.showAMPM ? this.state.timeAM : this.state.time24}
           activeSettings={activeSettings}
           updateClockSetting={this.updateClockSetting.bind(this)}
+          toggleModal={this.toggleModal.bind(this)}
         />
+        <div className={`modal ${this.state.modalDisplay ? 'show' : 'hide'}`}>
+          <h3>Would you like to save your location?</h3>
+          <a className="modalBtn" onClick={this.modalChoice} data-choice="yes">YES</a>
+          <a className="modalBtn" onClick={this.modalChoice} data-choice="no">NO</a>
+        </div>
+
       </div>
     );
   }
