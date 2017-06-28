@@ -12,6 +12,7 @@ export default class Weather extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      location: '',
       name: '',
       temp: '',
       icon: '',
@@ -22,6 +23,7 @@ export default class Weather extends Component {
   }
 
   getWeather(val) {
+    this.props.saveLocation(val); // save location to app component
     // check val is zip or city
     let param = isNaN(Number(val)) ? 'city' : 'zip';
     console.log('param', param);

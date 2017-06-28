@@ -35,7 +35,10 @@ export default class Wallpaper extends Component {
       <div className="wallpaper-container">
         <div id="wallpaper"></div>
 
-        <Weather toggleModal={this.props.toggleModal} />
+        <Weather 
+          toggleModal={this.props.toggleModal} 
+          saveLocation={this.props.saveLocation}
+        />
         <Setting 
           updateClockSetting={this.props.updateClockSetting} 
           activeSettings={this.props.activeSettings}

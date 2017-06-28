@@ -89,12 +89,19 @@ export default class App extends Component {
   modalChoice(event) {
     console.log('modal choice function', event.target.dataset.choice);
     if (event.target.dataset.choice === 'yes') {
-      // save
+      console.log('update setting');
+      this.setState({ doNotShowAgain: true }, this.updateSettings);
     } else if (event.target.dataset.choice === 'no') {
-      // dont save
+      this.setState({ location: '', doNotShowAgain: false }); 
     } else {
-      // catch exceptions
+      console.log('modalChoice exceptions'); // catch exceptions
     }
+    this.setState({ modalDisplay: !this.state.modalDisplay }); // close modal
+  }
+
+  saveLocation(val) {
+    console.log('save location function', val);
+    this.setState({ location: val });
   }
   
   render() {
@@ -111,11 +118,12 @@ export default class App extends Component {
           activeSettings={activeSettings}
           updateClockSetting={this.updateClockSetting.bind(this)}
           toggleModal={this.toggleModal.bind(this)}
+          saveLocation={this.saveLocation.bind(this)}
         />
         <div className={`modal ${this.state.modalDisplay ? 'show' : 'hide'}`}>
           <h3>Would you like to save your location?</h3>
-          <a className="modalBtn" onClick={this.modalChoice} data-choice="yes">YES</a>
-          <a className="modalBtn" onClick={this.modalChoice} data-choice="no">NO</a>
+          <a className="modalBtn" onClick={this.modalChoice.bind(this)} data-choice="yes">YES</a>
+          <a className="modalBtn" onClick={this.modalChoice.bind(this)} data-choice="no">NO</a>
         </div>
 
       </div>
