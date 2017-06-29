@@ -115,6 +115,7 @@ export default class App extends Component {
         <Wallpaper 
           quote={this.state.quote} 
           time={this.state.showAMPM ? this.state.timeAM : this.state.time24}
+          location={this.state.location}
           activeSettings={activeSettings}
           updateClockSetting={this.updateClockSetting.bind(this)}
           toggleModal={this.toggleModal.bind(this)}

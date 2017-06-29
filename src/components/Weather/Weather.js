@@ -12,7 +12,7 @@ export default class Weather extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      location: '',
+      location: this.props.location,
       name: '',
       temp: '',
       icon: '',
@@ -20,6 +20,12 @@ export default class Weather extends Component {
       searchDisplay: 'hide',
       visible: false,
     };
+    console.log('weather props', this.props);
+  }
+
+  componentWillMount() {
+    // if location prop is valid (not null)
+    (this.state.location) ? this.getWeather(this.state.location) : console.log('no saved location'); 
   }
 
   getWeather(val) {

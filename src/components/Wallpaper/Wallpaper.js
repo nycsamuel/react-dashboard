@@ -38,6 +38,7 @@ export default class Wallpaper extends Component {
         <Weather 
           toggleModal={this.props.toggleModal} 
           saveLocation={this.props.saveLocation}
+          location={this.props.location}
         />
         <Setting 
           updateClockSetting={this.props.updateClockSetting} 
