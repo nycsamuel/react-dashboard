@@ -38,11 +38,16 @@ export default class App extends Component {
             doNotShowAgain: data[0].donotshowagain,
             location: data[0].location,
           });
+          this.getWeather(location);
         } else {
           console.log('empty setting');
         }
       })
       .catch(err => console.log('getSettings err', err));
+  }
+
+  getWeather(location) {
+    fetch().then().then().catch();
   }
 
   updateTime() {
