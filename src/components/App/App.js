@@ -20,6 +20,8 @@ export default class App extends Component {
     };
   }
 
+  componentWillMount() {}
+
   componentDidMount() {
     this.getSettings();
     this.getQuote();
@@ -30,24 +32,18 @@ export default class App extends Component {
     fetch('/api/setting')
       .then(res => res.json())
       .then(data => {
-        console.log('get settings: ', data);
+        // console.log('get settings: ', data);
         if (data.length > 0) {
-          console.log('setting data is not empty');
           this.setState({
             showAMPM: data[0].showampm,
             doNotShowAgain: data[0].donotshowagain,
             location: data[0].location,
           });
-          this.getWeather(location);
         } else {
           console.log('empty setting');
         }
       })
       .catch(err => console.log('getSettings err', err));
-  }
-
-  getWeather(location) {
-    fetch().then().then().catch();
   }
 
   updateTime() {
@@ -60,7 +56,6 @@ export default class App extends Component {
     fetch('/api/quotes')
       .then(res => res.json())
       .then(data => {
-        console.log('quote data', data);
         this.setState({ quote: data });
       })
       .catch(err => console.log('quote err', err));
@@ -77,7 +72,6 @@ export default class App extends Component {
       donotshowagain: this.state.doNotShowAgain,
       showampm: this.state.showAMPM,
     };
-    console.log('updateSettings function called');
     fetch('/api/setting', {
       headers: { 'Content-Type' : 'application/json'},
       method: 'post',
@@ -92,7 +86,6 @@ export default class App extends Component {
   }
 
   modalChoice(event) {
-    console.log('modal choice function', event.target.dataset.choice);
     if (event.target.dataset.choice === 'yes') {
       console.log('update setting');
       this.setState({ doNotShowAgain: true }, this.updateSettings);

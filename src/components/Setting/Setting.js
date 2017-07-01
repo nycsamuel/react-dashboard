@@ -16,7 +16,7 @@ export default class Setting extends Component {
       display: false,
     };
 
-    console.log('checking props', this.props.activeSettings);
+    // console.log('checking props', this.props.activeSettings);
   }
 
   toggleSetting(event) {
